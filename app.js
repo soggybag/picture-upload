@@ -24,7 +24,7 @@ const app = express();
 // initialize middleware.
 // Note! Middleware is applied in the order it is initialized order matters!
 app.use(express.static('public'));
-app.use('/uploads', express.static(__dirname + '/uploads'));
+app.use(express.static('uploads'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(fileUpload());
@@ -37,9 +37,22 @@ app.engine('.hbs', exphbs({
 app.set('view engine', '.hbs');
 
 // Controllers
-require('./controllers/post-controller')(app);
+require('./controllers/post-controller').routes(app);
+
+//The 404 Route (ALWAYS Keep this as the last route)
+// app.get('*', function(req, res){
+//   res.send('what???', 404);
+// });
+// Handle 404 - Keep this as a last route
+app.use(function(req, res, next) {
+    res.status(404);
+    res.send('404: File Not Found');
+    next();
+});
 
 // Start the App!
-app.listen(3000, () => {
-  console.log('Server running on port 3000')
+const listener = app.listen(3001, () => {
+  console.log(`Server running on port: ${listener.address().port}`);
 });
+
+module.exports.app = app;
