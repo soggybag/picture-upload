@@ -11,18 +11,29 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.2",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.3",
     "crypto-js": "^3.1.9-1",
-    "express": "^4.16.0",
-    "express-fileupload": "^0.2.0",
+    "express": "^4.16.2",
+    "express-fileupload": "^0.3.0",
     "express-handlebars": "^3.0.0",
-    "mongoose": "^4.11.13",
+    "express-session": "^1.15.6",
+    "mongoose": "^4.13.5",
+    "morgan": "^1.9.0",
+    "passport": "^0.4.0",
+    "passport-facebook": "^2.1.1",
+    "passport-google-oauth": "^1.0.0",
+    "passport-local": "^1.0.0",
+    "passport-twitter": "^1.0.4",
     "path": "^0.12.7",
+    "session": "^0.1.0",
     "short-id": "0.1.0-1"
   },
   "devDependencies": {
     "chai": "^4.1.2",
-    "mocha": "^4.0.0",
+    "mocha": "^4.0.1",
     "supertest": "^3.0.0"
   }
 }

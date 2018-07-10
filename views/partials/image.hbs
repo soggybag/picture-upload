@@ -1,6 +1,7 @@
-<li class="post-image">
-  <a href="post/{{this._id}}">
-    <div class="image-title">{{this.name}}</div>
-    <div class="image-image"><img src="{{this.path}}"></div>
-  </a>
-</li>
+
+<div class="image-grid-container">
+    <a class="post-image image-grid-image" href="post/{{this._id}}">
+      <img class="image-image" src="{{this.path}}">
+      <div class="image-title">{{this.name}}</div>
+    </a>
+</div>

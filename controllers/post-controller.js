@@ -11,9 +11,7 @@ const getPost = (id) => {
   return Post.findById(id);
 }
 
-module.exports.getPosts = getPosts;
-module.exports.getPosts = getPost;
-module.exports.routes = (app) => {
+module.exports = (app) => {
 
   // Define some routes
 
@@ -55,19 +53,26 @@ module.exports.routes = (app) => {
   });
 
   // ***************************************
-  // New Post
+  // New Post upload image
   // ***************************************
   app.post('/new', (req, res) => {
-    console.log("get /new");
+    if (!req.files) {
+      return res.status(400).send('No files were selected')
+    }
+
+    console.log("** post new image **");
+
     const body = req.body;
     const imageFile = req.files.image;
     const fileNameArray = imageFile.name.split('.');
     const fileExtsion = fileNameArray[fileNameArray.length - 1];
-    const filePath = `/${shortid.generate()}.${fileExtsion}`;
-    imageFile.mv(filePath, (err) => {
+    const filePath = `./${shortid.generate()}.${fileExtsion}`;
+    const uploadPath = `./uploads/${filePath}`;
+
+    imageFile.mv(uploadPath, (err) => {
       if (err) {
         console.log(err);
-        return;
+        return res.status(500)
       }
       const post = new Post({
         ...body,
