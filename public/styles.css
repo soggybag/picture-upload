@@ -1,3 +1,4 @@
+/* Global Styles */
 * {
   box-sizing: border-box;
 }
@@ -13,8 +14,21 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
+/* Headings */
+
 h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+  letter-spacing: 1px;
   font-family: 'Russo One', sans-serif;
+}
+
+/* Form Elements */
+
+input, button {
+  border-radius: 0.25em;
+  border: none;
+  font-size: 1em;
+  padding: 0.5em;
 }
 
 .page-container {
@@ -110,24 +124,13 @@ h1, h2, h3, h4, h5, h6 {
   flex: 1;
 }
 
+.upload-form-image-input {
+  display: none;
+}
+
 .upload-form-input-name {
   width: calc(100% - 1em);
   margin-right: 1em;
-  border-radius: 0.25em;
-  border: none;
-  font-size: 1em;
-}
-
-.upload-form input {
-  padding: 0.5em;
-}
-
-.upload-form button {
-  padding: 0.5em;
-}
-
-.upload-form-image-input {
-  display: none;
 }
 
 .upload-form-image-label {
