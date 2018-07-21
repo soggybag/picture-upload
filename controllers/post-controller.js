@@ -1,6 +1,13 @@
+//================================================
+// Import NPM dependancies
+
 const shortid = require('short-id');
 
+// Import local dependancies
 const Post = require('../models/post');
+
+// ==============================================
+// Helper methods
 
 const getPosts = (options = {}) => {
   // console.log("get Posts", options);
@@ -11,10 +18,11 @@ const getPost = (id) => {
   return Post.findById(id);
 }
 
+// ===============================================
+// Routes
+
 module.exports = (app) => {
-
   // Define some routes
-
   // localhost:3000/api/posts
   // herokuapp.com/whatever/api/posts
   app.get('/api/posts', (req, res) => {
@@ -56,13 +64,13 @@ module.exports = (app) => {
   // New Post upload image
   // ***************************************
   app.post('/new', (req, res) => {
-    // Check that a file was uploaded. 
+    // Check that a file was uploaded.
     if (!req.files) {
       return res.status(400).send('No files were selected')
     }
 
     console.log("** post new image **");
-    
+
     const body = req.body;
     // Get the image data from the req.body
     const imageFile = req.files.image;
@@ -71,7 +79,7 @@ module.exports = (app) => {
     // get the file extension
     const fileExtsion = fileNameArray[fileNameArray.length - 1];
     // generate a short id with the same file extension
-    const filePath = `./${shortid.generate()}.${fileExtsion}`;
+    const filePath = `/${shortid.generate()}.${fileExtsion}`;
     // Define the upload path
     const uploadPath = `./uploads/${filePath}`;
 
@@ -83,13 +91,13 @@ module.exports = (app) => {
         console.log(err);
         return res.status(500)
       }
-      // If no error make a post that includes the path to the file. 
+      // If no error make a post that includes the path to the file.
       const post = new Post({
         ...body,
         path: filePath,
         originalFileName: imageFile.name
       });
-      // Save the post to the database. 
+      // Save the post to the database.
       post.save().then((post) => {
         console.log("post added");
         res.redirect('/');

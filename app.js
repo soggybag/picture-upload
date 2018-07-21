@@ -33,12 +33,15 @@ mongoose.connection.on('error', console.error.bind(console, 'MongoDB connection 
 
 
 // Define top level actions
+
+// Create an instance of Express
 const app = express()
 
 // initialize middleware.
 // Note! Middleware is applied in the order it is initialized order matters!
 app.use(express.static('public'))
 app.use(express.static('uploads'))
+// app.use(express.static(path.join(__dirname, 'public')));
 app.use(morgan('dev'))
 app.use(cookieParser())
 
