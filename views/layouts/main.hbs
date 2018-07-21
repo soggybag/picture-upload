@@ -3,19 +3,22 @@
   <head>
     <title>{{pageTitle}}</title>
     <meta charset='utf-8'>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Russo+One" rel="stylesheet">
     <link rel="stylesheet" href="/styles.css">
   </head>
   <body>
+    <div class="page-container">
 
-    {{> header}}
+      {{> header}}
 
-    <div class="container">
-      <!-- Content from templates here! -->
-      {{{body}}}
+      <div class="container">
+        <!-- Content from templates here! -->
+        {{{body}}}
+      </div>
+
+      {{> footer}}
+
     </div>
-
-    {{> footer}}
-
     <script></script>
   </body>
 </html>

@@ -94,8 +94,3 @@ const listener = app.listen(3001, () => {
 });
 
 module.exports.app = app;
-
-
-app.get('/weather', (req, res) => {
-  
-})

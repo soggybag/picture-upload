@@ -1,5 +1,10 @@
-<form action='/new' method='post' enctype="multipart/form-data">
-  <div><input type='text' placeholder='name' name='name'></div>
-  <div><input type='file' placeholder='image' name='image'></div>
-  <div><button type='submit'>Submit</button></div>
-</form>
+<div class="upload-form-container">
+  <form class="upload-form" action='/new' method='post' enctype="multipart/form-data">
+    <div class="upload-form-div-name">
+      <input class="upload-form-input-name" type='text' placeholder='name' name='name'>
+    </div>
+    <div><label class="upload-form-image-label" for="image-input">Chose Image</label></div>
+    <div><input class="upload-form-image-input" id="image-input" type='file' placeholder='image' name='image'></div>
+    <div><button type='submit'>Submit</button></div>
+  </form>
+</div>
